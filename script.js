@@ -192,8 +192,9 @@ for(let i=0; i<arrayOfCheckedFunction.length;i++){
 //shuffle password
 password=shuffle(Array.from(password));
 passwordDisplay.value=password;
-calcStrength;
+calcStrength();
 
 
     }
 )
+console.log('hi');
