@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Generator</title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;600&display=swap"
+      rel="stylesheet" />
+      <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div id="wrapper">
@@ -20,7 +26,7 @@
         <div class="displayContainer">
           <input type="text" placeholder="Password" readonly passwordDisplay />
           <button class="copyBtn">
-            <span copyMessage></span>
+            <span class="ab" copyMessage></span>
             <img src="/images/copy.svg" alt="copy" width="24" height="24" />
           </button>
         </div>
@@ -66,7 +72,7 @@
             <div class="indicator"></div>
           </div>
 
-          <div id="generateBtn">generate password</div>
+          <button id="generateBtn">Generate Password </button>
         </div>
       </div>
     </div>

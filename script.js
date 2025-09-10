@@ -1,7 +1,7 @@
 // handling slider and display length
 
 let lengthDisplay=document.querySelector('[lengthDisplay]');
-let slider=document.querySelector('input[type=range]')
+let slider=document.querySelector('input[type=range]');
 
 function handleSlider(){
     slider.value=passwordLength;
@@ -21,7 +21,7 @@ handleSlider();
 const symbol = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
 function generateRandom(min,max){
-return Math.floor(Math.random() * (max-min)) +min ;
+return Math.floor(Math.random() * (max - min)) +min ;
 }
 function generateRandomLowercase(){
     return String.fromCharCode(generateRandom(97,123));
@@ -30,7 +30,7 @@ function generateRandomUppercase(){
     return String.fromCharCode(generateRandom(65,91));
 }
 function generateRandomNumber(){
-    return generateRandom(0,10);
+    return generateRandom(1,10);
 }
 function generateRandomSymbol(){
     let index=generateRandom(0,symbol.length);
@@ -69,13 +69,13 @@ if(lowercase.checked)
     hasLower=true;
 if(numbers.checked)
     hasNumber=true;
-if(symbols.checked){
+if(symbols.checked)
     hasSymbol=true;
-}
+
 
 if(hasUpper&&hasLower&&(hasNumber||hasSymbol)&&passwordLength>=8)
    { setIndicator('#0f0');  }
-if(
+ else if(
     (hasUpper||hasLower)&&(hasNumber||hasSymbol)&&passwordLength>=6
 ){
     setIndicator('#ff0');
@@ -92,7 +92,7 @@ else {setIndicator('#f00');
 
 let copyMessage=document.querySelector('[copyMessage]');
 let copyBtn=document.querySelector('.copyBtn');
-let passwordDisplay=document.querySelector('[passwordDisplay]');
+let passwordDisplay=document.querySelector('input[passwordDisplay]');
 
 async function copyContent() {
     try{
@@ -100,11 +100,11 @@ async function copyContent() {
         copyMessage.innerText='Copied';
     }
     catch(e){
-        copyMessage.innerText='Failed'
+        copyMessage.innerText='Failed';
     }
     copyMessage.classList.add('active');
     
-    setTimeout(() => {copyMessage.classList.remove('active')
+    setTimeout(() => {copyMessage.classList.remove('active');
         
     }, 2000);
 }
@@ -147,15 +147,17 @@ function handleCheckBoxChange(){
             checkCount++;
     })
 
-    if (passwordLength<checkCount)
-        passwordLength=checkCount;
+    if (passwordLength < checkCount)
+      {passwordLength=checkCount;
+            handleSlider();
 
-    handleSlider();
+      }  
+
 }
 
 checkBoxes.forEach((checkbox)=>
 {
-    checkbox.addEventListener('change',handleCheckBoxChange());
+    checkbox.addEventListener('change',handleCheckBoxChange);
 }
 )
 
@@ -183,7 +185,7 @@ for(let i=0; i<arrayOfCheckedFunction.length;i++){
     password+=arrayOfCheckedFunction[i]();
 }
  //additional addition
- for (let i=0; passwordLength-arrayOfCheckedFunction.length;i++){
+ for (let i=0; i< passwordLength-arrayOfCheckedFunction.length;i++){
     let randIndex=generateRandom(0,arrayOfCheckedFunction.length);
     password+=arrayOfCheckedFunction[randIndex]();
 
@@ -197,4 +199,3 @@ calcStrength();
 
     }
 )
-console.log('hi');
